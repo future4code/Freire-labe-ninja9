@@ -16,6 +16,8 @@ const FiltroContainer = styled.section`
     width: 15%;
     border-right: 1px solid black;
     min-height: 100vh;
+    position: fixed;
+    background-color: gray;
 `
 
 const ListaServicosContainer = styled.ul`
@@ -26,7 +28,14 @@ const ListaServicosContainer = styled.ul`
     grid-auto-rows: 13rem;
     grid-gap: 1rem;
     width: 70vw;
-    border: 1px solid black;
+    margin-left: 15%;
+`
+
+const CarrinhoContainer = styled.div`
+    width: 15%;
+    min-height: 100vh;
+    background-color: gray;
+    border-left: 1px solid black;
 `
 
 class ListagemDeTrabalhos extends React.Component {
@@ -35,11 +44,11 @@ class ListagemDeTrabalhos extends React.Component {
         inputValorMaximo: '',
         inputValorBusca: '',
         listaExemplo: [
-            {titulo: 'teste', preco: 40, prazo: '05-21-2023', id: 0},
-            {titulo: 'leste2', preco: 15, prazo: '08-15-2022', id: 1},
-            {titulo: 'aeste3', preco: 250, prazo: '12-21-2022', id: 2},
-            {titulo: 'queste4', preco: 5, prazo: '10-02-2023', id: 3},
-            {titulo: 'neste5', preco: 39, prazo: '11-30-2022', id: 4},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 0},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 1},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 2},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 3},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 4},
         ],
         ordem: 'semOrdenacao'
     }
@@ -169,9 +178,9 @@ class ListagemDeTrabalhos extends React.Component {
                     {listaServicosJsx}
                 </ListaServicosContainer>
 
-                <div>
+                <CarrinhoContainer>
                     <h2>Carrinho</h2>
-                </div>
+                </CarrinhoContainer>
 
             </MainContainer>
         )
