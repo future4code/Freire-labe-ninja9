@@ -71,7 +71,17 @@ class ListagemDeTrabalhos extends React.Component {
             ordem: select.options[select.selectedIndex].value
         })
     }
-    
+
+    //Mostra detalhes
+    handleMostraDetalhes = (event) => {
+        if(this.state.detalhes === 'off'){
+            this.setState({detalhes: 'on'})
+        }
+        else {
+            this.setState({detalhes: 'off'})
+        }
+    }
+
     render() {
         //filtragem
         let listaServicosFiltrada
@@ -131,6 +141,8 @@ class ListagemDeTrabalhos extends React.Component {
                     preco={servico.preco}
                     prazo={dataFormatada}
                     key={servico.id}
+                    id={servico.id}
+                    onClick={this.handleMostraDetalhes}
                 />
             )
         })
@@ -139,7 +151,9 @@ class ListagemDeTrabalhos extends React.Component {
         let telaDetalhes
         if(this.state.detalhes === 'on') {
             telaDetalhes = (
-                <PropostaDeServico />
+                <PropostaDeServico 
+                    botaoVoltaClick={this.handleMostraDetalhes}
+                />
             )
         }
 

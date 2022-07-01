@@ -6,8 +6,8 @@ const ContainerPrincipal = styled.div`
     position: fixed;
     background-color: #f5f4fc;
     margin-left: 15%;
-    width: 69%;
-    min-height: 80vh;
+    width: 70%;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -98,7 +98,7 @@ class PropostaDeServico extends React.Component {
                     </DescricaoContainer>
                     <BotoesContainer>
                         <BotaoDetalhesAdd>Adicionar ao carrinho</BotaoDetalhesAdd>
-                        <BotaoDetalhesVolta>Voltar para a lista</BotaoDetalhesVolta>
+                        <BotaoDetalhesVolta onClick={this.props.botaoVoltaClick}>Voltar para a lista</BotaoDetalhesVolta>
                     </BotoesContainer>
                 </DetalhesContainer>
             </ContainerPrincipal>

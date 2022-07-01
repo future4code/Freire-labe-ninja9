@@ -19,7 +19,7 @@ class CardServico extends React.Component {
                 <p>Preço: R$ {this.props.preco.toFixed(2)}</p>
                 <p>Prazo: {this.props.prazo}</p>
                 <div>
-                    <button>Ver detalhes</button>
+                    <button onClick={this.props.onClick} id={this.props.id}>Ver detalhes</button>
                     <button>Adicionar ao carrinho</button>
                 </div>
             </CardContainer>
