@@ -7,6 +7,11 @@ const MainContainer = styled.div`
     display: flex;
     width: 100%;
     min-height: 100vh;
+    color: #7d66c1;
+`
+
+const TituloSection = styled.h2`
+    text-align: center;
 `
 
 const FiltroContainer = styled.section`
@@ -14,10 +19,10 @@ const FiltroContainer = styled.section`
     display: flex;
     flex-direction: column;
     width: 15%;
-    border-right: 1px solid black;
+    border-right: 1px solid #7d66c1;
     min-height: 100vh;
     position: fixed;
-    background-color: gray;
+    background-color: #cfcbe2;
 `
 
 const ListaServicosContainer = styled.ul`
@@ -27,15 +32,22 @@ const ListaServicosContainer = styled.ul`
     grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
     grid-auto-rows: 13rem;
     grid-gap: 1rem;
-    width: 70vw;
+    width: 70%;
     margin-left: 15%;
 `
 
 const CarrinhoContainer = styled.div`
     width: 15%;
     min-height: 100vh;
-    background-color: gray;
-    border-left: 1px solid black;
+    background-color: #cfcbe2;
+    border-left: 1px solid #7d66c1;
+    padding: 1rem;
+    position: fixed;
+    right: 0;
+`
+
+const SelectOptions = styled.select`
+    padding: 0.6rem;
 `
 
 class ListagemDeTrabalhos extends React.Component {
@@ -49,6 +61,31 @@ class ListagemDeTrabalhos extends React.Component {
             {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 2},
             {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 3},
             {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 4},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 5},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 6},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 7},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 8},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 9},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 10},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 11},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 12},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 13},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 14},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 15},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 16},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 17},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 18},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 19},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 20},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 21},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 22},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 23},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 24},
+            {titulo: 'Manutenção de computadores', preco: 200, prazo: '05-21-2023', id: 25},
+            {titulo: 'Diarista', preco: 100, prazo: '08-15-2022', id: 26},
+            {titulo: 'Programador', preco: 2000, prazo: '12-21-2022', id: 27},
+            {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 28},
+            {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 29},
         ],
         ordem: 'semOrdenacao'
     }
@@ -145,7 +182,7 @@ class ListagemDeTrabalhos extends React.Component {
         return (
             <MainContainer>
                 <FiltroContainer>
-                    <h2>Filtros</h2>
+                    <TituloSection>Filtros</TituloSection>
                     <InputComponente
                         nome='Valor mínimo'
                         type='number'
@@ -165,13 +202,13 @@ class ListagemDeTrabalhos extends React.Component {
                         onChange={this.handleValorBusca}
                     />
                     <label htmlFor='ordenacao'>Ordenação</label>
-                    <select name='ordenacao' id='ordenacao' onChange={this.handleOrdem}>
+                    <SelectOptions name='ordenacao' id='ordenacao' onChange={this.handleOrdem}>
                         <option value='semOrdenacao'>Sem Ordenação</option>
                         <option value='titulo'>Título</option>
                         <option value='valorMinimo'>Menor Valor</option>
                         <option value='valorMaximo'>Maior Valor</option>
                         <option value='prazo'>Prazo</option>
-                    </select>
+                    </SelectOptions>
                 </FiltroContainer>
 
                 <ListaServicosContainer>
@@ -179,7 +216,7 @@ class ListagemDeTrabalhos extends React.Component {
                 </ListaServicosContainer>
 
                 <CarrinhoContainer>
-                    <h2>Carrinho</h2>
+                    <TituloSection>Carrinho</TituloSection>
                 </CarrinhoContainer>
 
             </MainContainer>

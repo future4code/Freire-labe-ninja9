@@ -16,8 +16,11 @@ const CardContainer = styled.div`
 
 const CardTitulo = styled.h4`
     font-size: 1.4rem;
-    color: #7D66C1;
     text-align: center;
+`
+
+const CardDescricao = styled.p`
+    color: black;
 `
 
 const BotoesContainer = styled.div`
@@ -29,7 +32,6 @@ const BotoesContainer = styled.div`
 
 const BotaoDetalhes = styled.p`
     text-transform: uppercase;
-    color: #7D66C1;
     padding: 0.5rem;
     border-radius: 5px;
     &:hover {
@@ -54,7 +56,7 @@ class CardServico extends React.Component {
         return (
             <CardContainer>
                 <CardTitulo>{this.props.titulo}</CardTitulo>
-                <p>Até {this.props.prazo} por <strong>R$ {this.props.preco.toFixed(2)}</strong></p>
+                <CardDescricao>Até {this.props.prazo} por <strong>R$ {this.props.preco.toFixed(2)}</strong></CardDescricao>
                 <BotoesContainer>
                     <BotaoDetalhes>Ver detalhes</BotaoDetalhes>
                     <CartIcone src={cartIcon}/>
