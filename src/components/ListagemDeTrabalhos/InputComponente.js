@@ -5,10 +5,12 @@ const InputContainer = styled.div`
     margin: 0.5rem 0;
     display: flex;
     flex-direction: column;
-`
+    `
 
 const InputElemento = styled.input`
+    background-color: #f5f4fc;
     padding: 0.6rem;
+    border-radius: 5px;
 `
 
 class InputComponente extends React.Component {
