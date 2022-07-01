@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import InputComponente from './InputComponente'
 import CardServico from './CardServico'
+import Footer from '../footer'
 
 const MainContainer = styled.div`
     display: flex;
@@ -19,7 +20,7 @@ const FiltroContainer = styled.section`
     display: flex;
     flex-direction: column;
     width: 15%;
-    border-right: 1px solid #7d66c1;
+    /* border-right: 1px solid #7d66c1; */
     min-height: 100vh;
     position: fixed;
     background-color: #cfcbe2;
@@ -34,13 +35,14 @@ const ListaServicosContainer = styled.ul`
     grid-gap: 1rem;
     width: 70%;
     margin-left: 15%;
+    margin-bottom: 1rem;
 `
 
 const CarrinhoContainer = styled.div`
     width: 15%;
     min-height: 100vh;
     background-color: #cfcbe2;
-    border-left: 1px solid #7d66c1;
+    /* border-left: 1px solid #7d66c1; */
     padding: 1rem;
     position: fixed;
     right: 0;
@@ -180,46 +182,49 @@ class ListagemDeTrabalhos extends React.Component {
         })
 
         return (
-            <MainContainer>
-                <FiltroContainer>
-                    <TituloSection>Filtros</TituloSection>
-                    <InputComponente
-                        nome='Valor mínimo'
-                        type='number'
-                        value={this.state.inputValorMinimo}
-                        onChange={this.handleValorMinimo}
-                    />
-                    <InputComponente
-                        nome='Valor máximo'
-                        type='number'
-                        value={this.state.inputValorMaximo}
-                        onChange={this.handleValorMaximo}
-                    />
-                    <InputComponente
-                        nome='Busca por nome'
-                        type='text'
-                        value={this.state.inputValorBusca}
-                        onChange={this.handleValorBusca}
-                    />
-                    <label htmlFor='ordenacao'>Ordenação</label>
-                    <SelectOptions name='ordenacao' id='ordenacao' onChange={this.handleOrdem}>
-                        <option value='semOrdenacao'>Sem Ordenação</option>
-                        <option value='titulo'>Título</option>
-                        <option value='valorMinimo'>Menor Valor</option>
-                        <option value='valorMaximo'>Maior Valor</option>
-                        <option value='prazo'>Prazo</option>
-                    </SelectOptions>
-                </FiltroContainer>
 
-                <ListaServicosContainer>
-                    {listaServicosJsx}
-                </ListaServicosContainer>
-
-                <CarrinhoContainer>
-                    <TituloSection>Carrinho</TituloSection>
-                </CarrinhoContainer>
-
-            </MainContainer>
+            <div>
+                <MainContainer>
+                    <FiltroContainer>
+                        <TituloSection>Filtros</TituloSection>
+                        <InputComponente
+                            nome='Valor mínimo'
+                            type='number'
+                            value={this.state.inputValorMinimo}
+                            onChange={this.handleValorMinimo}
+                        />
+                        <InputComponente
+                            nome='Valor máximo'
+                            type='number'
+                            value={this.state.inputValorMaximo}
+                            onChange={this.handleValorMaximo}
+                        />
+                        <InputComponente
+                            nome='Busca por nome'
+                            type='text'
+                            value={this.state.inputValorBusca}
+                            onChange={this.handleValorBusca}
+                        />
+                        <label htmlFor='ordenacao'>Ordenação</label>
+                        <SelectOptions name='ordenacao' id='ordenacao' onChange={this.handleOrdem}>
+                            <option value='semOrdenacao'>Sem Ordenação</option>
+                            <option value='titulo'>Título</option>
+                            <option value='valorMinimo'>Menor Valor</option>
+                            <option value='valorMaximo'>Maior Valor</option>
+                            <option value='prazo'>Prazo</option>
+                        </SelectOptions>
+                    </FiltroContainer>
+    
+                    <ListaServicosContainer>
+                        {listaServicosJsx}
+                    </ListaServicosContainer>
+    
+                    <CarrinhoContainer>
+                        <TituloSection>Carrinho</TituloSection>
+                    </CarrinhoContainer>
+                </MainContainer>
+                <Footer />
+            </div>
         )
     }
 }
