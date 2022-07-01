@@ -5,7 +5,7 @@ import cartIcon from '../../img/cart_icon.png'
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 1rem;
@@ -17,10 +17,12 @@ const CardContainer = styled.div`
 const CardTitulo = styled.h4`
     font-size: 1.4rem;
     text-align: center;
+    max-height: 2rem;
 `
 
 const CardDescricao = styled.p`
-    color: black;
+    color: #505050;
+    margin: 2.5rem 0;
 `
 
 const BotoesContainer = styled.div`

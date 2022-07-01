@@ -14,13 +14,13 @@ const ContainerPrincipal = styled.div`
 `
 
 const DetalhesContainer = styled.div`
-    margin-top: 10rem;
     display: flex;
     width: 35%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
     height: 40vh;
+    text-align: center;
 `
 
 const DescricaoContainer = styled.div`
@@ -85,16 +85,20 @@ const BotaoDetalhesVolta = styled.button`
     }
 `
 
+const DescricaoParagrafos = styled.p`
+    margin-bottom: 0.5rem;
+`
+
 class PropostaDeServico extends React.Component {
     render() {
         return (
             <ContainerPrincipal>
                 <DetalhesContainer>
-                    <TituloDetalhes>Pastelaria</TituloDetalhes>
+                    <TituloDetalhes>{this.props.titulo}</TituloDetalhes>
                     <DescricaoContainer>
-                        <p>Aceita: <MetodoPagamento>Paypal</MetodoPagamento></p>
-                        <p>Até 30/12/2022 por <strong>R$ 5.00</strong></p>
-                        <p>Vendemos pastéis</p>
+                        <DescricaoParagrafos>Aceita: <MetodoPagamento>Paypal</MetodoPagamento></DescricaoParagrafos>
+                        <DescricaoParagrafos>Até {this.props.prazo} por <strong>R$ {this.props.preco.toFixed(2)}</strong></DescricaoParagrafos>
+                        <DescricaoParagrafos>Vendemos pastéis</DescricaoParagrafos>
                     </DescricaoContainer>
                     <BotoesContainer>
                         <BotaoDetalhesAdd>Adicionar ao carrinho</BotaoDetalhesAdd>

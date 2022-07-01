@@ -2,11 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import InputComponente from './InputComponente'
 import CardServico from './CardServico'
-<<<<<<< HEAD
 import PropostaDeServico from './PropostaDeServico'
-=======
 import Footer from '../footer'
->>>>>>> master
 
 const MainContainer = styled.div`
     display: flex;
@@ -35,8 +32,8 @@ const ListaServicosContainer = styled.ul`
     padding: 1rem;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    grid-auto-rows: 13rem;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-auto-rows: 14rem;
     grid-gap: 1rem;
     width: 70%;
     margin-left: 15%;
@@ -97,7 +94,8 @@ class ListagemDeTrabalhos extends React.Component {
             {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 29},
         ],
         ordem: 'semOrdenacao',
-        detalhes: 'off'
+        detalhes: 'off',
+        detalhesId: ''
     }
 
     //Requisição da API
@@ -129,7 +127,10 @@ class ListagemDeTrabalhos extends React.Component {
     //Mostra detalhes
     handleMostraDetalhes = (event) => {
         if(this.state.detalhes === 'off'){
-            this.setState({detalhes: 'on'})
+            this.setState({
+                detalhes: 'on',
+                detalhesId: event.target.id
+            })
         }
         else {
             this.setState({detalhes: 'off'})
@@ -204,11 +205,20 @@ class ListagemDeTrabalhos extends React.Component {
         //renderização da tela de detalhes
         let telaDetalhes
         if(this.state.detalhes === 'on') {
-            telaDetalhes = (
-                <PropostaDeServico 
-                    botaoVoltaClick={this.handleMostraDetalhes}
-                />
-            )
+            this.state.listaExemplo.forEach(servico => {
+                if(servico.id === Number(this.state.detalhesId)) {
+                    let data = new Date(servico.prazo)
+                    let dataFormatada = (data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear())
+                    telaDetalhes = (
+                        <PropostaDeServico 
+                            titulo={servico.titulo}
+                            prazo={dataFormatada}
+                            preco={servico.preco}
+                            botaoVoltaClick={this.handleMostraDetalhes}
+                        />
+                    )
+                }
+            })
         }
 
         return (
