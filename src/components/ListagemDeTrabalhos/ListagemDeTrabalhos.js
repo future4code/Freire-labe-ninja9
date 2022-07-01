@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import InputComponente from './InputComponente'
 import CardServico from './CardServico'
+import PropostaDeServico from './PropostaDeServico'
 
 const MainContainer = styled.div`
     display: flex;
@@ -41,7 +42,8 @@ class ListagemDeTrabalhos extends React.Component {
             {titulo: 'queste4', preco: 5, prazo: '10-02-2023', id: 3},
             {titulo: 'neste5', preco: 39, prazo: '11-30-2022', id: 4},
         ],
-        ordem: 'semOrdenacao'
+        ordem: 'semOrdenacao',
+        detalhes: 'off'
     }
 
     //Requisição da API
@@ -133,6 +135,14 @@ class ListagemDeTrabalhos extends React.Component {
             )
         })
 
+        //renderização da tela de detalhes
+        let telaDetalhes
+        if(this.state.detalhes === 'on') {
+            telaDetalhes = (
+                <PropostaDeServico />
+            )
+        }
+
         return (
             <MainContainer>
                 <FiltroContainer>
@@ -168,6 +178,8 @@ class ListagemDeTrabalhos extends React.Component {
                 <ListaServicosContainer>
                     {listaServicosJsx}
                 </ListaServicosContainer>
+
+                {telaDetalhes}
 
                 <div>
                     <h2>Carrinho</h2>
