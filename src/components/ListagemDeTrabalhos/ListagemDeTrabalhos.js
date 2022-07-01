@@ -27,6 +27,7 @@ const FiltroContainer = styled.section`
 `
 
 const ListaServicosContainer = styled.ul`
+    background-color: #f5f4fc;
     padding: 1rem;
     list-style-type: none;
     display: grid;
@@ -49,6 +50,8 @@ const CarrinhoContainer = styled.div`
 `
 
 const SelectOptions = styled.select`
+    background-color: #f5f4fc;
+    border-radius: 5px;
     padding: 0.6rem;
 `
 
