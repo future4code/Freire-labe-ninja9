@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import InputComponente from './InputComponente'
 import CardServico from './CardServico'
+import PropostaDeServico from './PropostaDeServico'
 import Footer from '../footer'
 
 const MainContainer = styled.div`
@@ -31,8 +32,8 @@ const ListaServicosContainer = styled.ul`
     padding: 1rem;
     list-style-type: none;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-    grid-auto-rows: 13rem;
+    grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr));
+    grid-auto-rows: 14rem;
     grid-gap: 1rem;
     width: 70%;
     margin-left: 15%;
@@ -92,7 +93,9 @@ class ListagemDeTrabalhos extends React.Component {
             {titulo: 'Cabeleireiro', preco: 40, prazo: '10-02-2023', id: 28},
             {titulo: 'Web Designer', preco: 2500, prazo: '11-30-2022', id: 29},
         ],
-        ordem: 'semOrdenacao'
+        ordem: 'semOrdenacao',
+        detalhes: 'off',
+        detalhesId: ''
     }
 
     //Requisição da API
@@ -120,7 +123,20 @@ class ListagemDeTrabalhos extends React.Component {
             ordem: select.options[select.selectedIndex].value
         })
     }
-    
+
+    //Mostra detalhes
+    handleMostraDetalhes = (event) => {
+        if(this.state.detalhes === 'off'){
+            this.setState({
+                detalhes: 'on',
+                detalhesId: event.target.id
+            })
+        }
+        else {
+            this.setState({detalhes: 'off'})
+        }
+    }
+
     render() {
         //filtragem
         let listaServicosFiltrada
@@ -180,9 +196,30 @@ class ListagemDeTrabalhos extends React.Component {
                     preco={servico.preco}
                     prazo={dataFormatada}
                     key={servico.id}
+                    id={servico.id}
+                    onClick={this.handleMostraDetalhes}
                 />
             )
         })
+
+        //renderização da tela de detalhes
+        let telaDetalhes
+        if(this.state.detalhes === 'on') {
+            this.state.listaExemplo.forEach(servico => {
+                if(servico.id === Number(this.state.detalhesId)) {
+                    let data = new Date(servico.prazo)
+                    let dataFormatada = (data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear())
+                    telaDetalhes = (
+                        <PropostaDeServico 
+                            titulo={servico.titulo}
+                            prazo={dataFormatada}
+                            preco={servico.preco}
+                            botaoVoltaClick={this.handleMostraDetalhes}
+                        />
+                    )
+                }
+            })
+        }
 
         return (
 
@@ -221,6 +258,8 @@ class ListagemDeTrabalhos extends React.Component {
                     <ListaServicosContainer>
                         {listaServicosJsx}
                     </ListaServicosContainer>
+
+                    {telaDetalhes}
     
                     <CarrinhoContainer>
                         <TituloSection>Carrinho</TituloSection>

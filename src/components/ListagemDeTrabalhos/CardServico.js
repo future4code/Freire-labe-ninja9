@@ -5,7 +5,7 @@ import cartIcon from '../../img/cart_icon.png'
 const CardContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
     padding: 1rem;
@@ -17,10 +17,12 @@ const CardContainer = styled.div`
 const CardTitulo = styled.h4`
     font-size: 1.4rem;
     text-align: center;
+    max-height: 2rem;
 `
 
 const CardDescricao = styled.p`
-    color: black;
+    color: #505050;
+    margin: 2.5rem 0;
 `
 
 const BotoesContainer = styled.div`
@@ -58,7 +60,7 @@ class CardServico extends React.Component {
                 <CardTitulo>{this.props.titulo}</CardTitulo>
                 <CardDescricao>Até {this.props.prazo} por <strong>R$ {this.props.preco.toFixed(2)}</strong></CardDescricao>
                 <BotoesContainer>
-                    <BotaoDetalhes>Ver detalhes</BotaoDetalhes>
+                    <BotaoDetalhes onClick={this.props.onClick} id={this.props.id}>Ver detalhes</BotaoDetalhes>
                     <CartIcone src={cartIcon}/>
                 </BotoesContainer>
             </CardContainer>
